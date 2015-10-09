@@ -25,6 +25,8 @@
 			$car = new StdClass();
 			$car->id = $id;
 			$car->number_plate = $number_plate;
+			$car->user_id = $user_id;
+			$car->color = $color_from_db;
 			
 			// lisame selle massiivi
 			array_push($array, $car);

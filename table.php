@@ -10,7 +10,9 @@
 <table border=1 >
 	<tr>
 		<th>id</th>
+		<th>kasut id</th>
 		<th>auto nr märk</th>
+		<th>värv</th>
 	</tr>
 	
 	<?php
@@ -22,7 +24,9 @@
 			echo "<tr>";
 			
 			echo "<td>".$car_list[$i]->id."</td>";
+			echo "<td>".$car_list[$i]->user_id."</td>";
 			echo "<td>".$car_list[$i]->number_plate."</td>";
+			echo "<td>".$car_list[$i]->color."</td>";
 			
 			echo "</tr>";
 		}
