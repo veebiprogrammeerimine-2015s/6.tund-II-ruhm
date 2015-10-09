@@ -28,14 +28,16 @@
 			
 			// lisame selle massiivi
 			array_push($array, $car);
-			echo "<pre>";
-			var_dump($array);
-			echo "</pre>";
+			//echo "<pre>";
+			//var_dump($array);
+			//echo "</pre>";
 			
 		}
 		
 		$stmt->close();
 		$mysqli->close();
+		
+		return $array;
 		
 		
 	}
