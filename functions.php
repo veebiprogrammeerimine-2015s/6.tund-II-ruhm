@@ -12,18 +12,27 @@
 		$stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color FROM car_plates");
 		$stmt->bind_result($id, $user_id, $number_plate, $color_from_db);
 		$stmt->execute();
+
 		
-		$row = 0;
+		// tühi massiiv kus hoiame objekte (1 rida andmeid)
+		$array = array();
 		
 		// tee tsüklit nii mitu korda, kui saad 
 		// ab'ist ühe rea andmeid
 		while($stmt->fetch()){
 			
-			echo $row." ".$number_plate."<br>";
-			$row = $row + 1;
+			// loon objekti iga while tsükli kord
+			$car = new StdClass();
+			$car->id = $id;
+			$car->number_plate = $number_plate;
+			
+			// lisame selle massiivi
+			array_push($array, $car);
+			echo "<pre>";
+			var_dump($array);
+			echo "</pre>";
+			
 		}
-		
-		// 0,1,2,3,4,5,
 		
 		$stmt->close();
 		$mysqli->close();
@@ -36,5 +45,6 @@
 	//$name = "Romil";
 	//echo "Tere ".$name;
 	
+	//var_dump("asdasdasdasd");
 	
 ?>
