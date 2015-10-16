@@ -33,15 +33,36 @@
 		// count($car_list) - massiivi pikkus
 		for($i = 0; $i < count($car_list); $i++){
 			// $i = $i +1; sama mis $i += 1; sama mis $i++;
-			echo "<tr>";
 			
-			echo "<td>".$car_list[$i]->id."</td>";
-			echo "<td>".$car_list[$i]->user_id."</td>";
-			echo "<td>".$car_list[$i]->number_plate."</td>";
-			echo "<td>".$car_list[$i]->color."</td>";
-			echo "<td><a href='?delete=".$car_list[$i]->id."'>X</a></td>";
+			//kui on see rida mida kasutaja tahab muuta siis kuvan input väljad
+			if(isset($_GET["edit"]) && $car_list[$i]->id == $_GET["edit"]){
+				// kasutajale muutmiseks
+				echo "<tr>";
+					echo "<form>";
+						echo "<td>".$car_list[$i]->id."</td>";
+						echo "<td>".$car_list[$i]->user_id."</td>";
+						echo "<td><input name='number_plate'></td>";
+						echo "<td><input name='color'></td>";
+						echo "<td><input type='submit' name='update'></td>";
+						echo "<td><a href='table.php'>cancel</a></td>";
+					echo "</form>";
+				echo "</tr>";
+				
+			}else{
+				// tavaline rida
+				echo "<tr>";
 			
-			echo "</tr>";
+				echo "<td>".$car_list[$i]->id."</td>";
+				echo "<td>".$car_list[$i]->user_id."</td>";
+				echo "<td>".$car_list[$i]->number_plate."</td>";
+				echo "<td>".$car_list[$i]->color."</td>";
+				echo "<td><a href='?delete=".$car_list[$i]->id."'>X</a></td>";
+				echo "<td><a href='?edit=".$car_list[$i]->id."'>edit</a></td>";
+			
+				echo "</tr>";
+			}
+			
+			
 		}
 	
 	?>
